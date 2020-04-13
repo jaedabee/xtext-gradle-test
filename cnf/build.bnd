@@ -1,0 +1,32 @@
+#
+# This file is left open for you to define your macros
+#
+
+-plugin.05.Eclipse: \
+      aQute.bnd.repository.p2.provider.P2Repository; \
+        url = http://download.eclipse.org/eclipse/updates/4.13/R-4.13-201909161045/; \
+        name = Eclipse Platform 4.13_2019-03
+        
+-plugin.06.Orbit: \
+      aQute.bnd.repository.p2.provider.P2Repository; \
+        url = https://download.eclipse.org/tools/orbit/downloads/drops/R20190827152740/repository/; \
+        name = Orbit 2019-03
+        
+
+-plugin.07.MWE: \
+      aQute.bnd.repository.p2.provider.P2Repository; \
+        url=https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.11.2/; \
+        name=MWE 2.11.2
+
+-plugin.08.EMF: \
+      aQute.bnd.repository.p2.provider.P2Repository; \
+        url = https://download.eclipse.org/modeling/emf/emf/builds/release/2.20/; \
+        name = EMF 2.20
+
+# P2 compressed repo appears to only give sources? Enumerated needed files from Maven.
+-plugin.11.XText: \
+      aQute.bnd.repository.maven.provider.MavenBndRepository; \
+      	releaseUrl=${mavenURL}; \
+        index=${build}/xtext.maven; \
+        name=XText 2.21
+    

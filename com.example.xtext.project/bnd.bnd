@@ -1,0 +1,37 @@
+-buildpath: \
+	org.eclipse.emf.codegen.ecore;version=2.13,\
+	org.eclipse.emf.codegen.ecore.xtext;version=1.1,\
+	org.eclipse.emf.common;version=2.11,\
+	org.eclipse.emf.ecore.xcore.lib;version=1.1,\
+	org.eclipse.jdt.core;version=3.13,\
+	org.eclipse.xtext;version=2.13,\
+	org.eclipse.xtext.ecore;version=2.13,\
+	org.eclipse.xtext.xbase;version=2.13,\
+	org.eclipse.xtext.xbase.lib;version=2.13,\
+	org.eclipse.emf.ecore.xcore;version=1.3,\
+	org.eclipse.emf.ecore;version=2.12,\
+	org.eclipse.emf.ecore.change;version=2.11,\
+	com.google.guava;version=21.0,\
+	com.example.project;version=latest
+	
+javac.source: 1.8
+javac.target: 1.8
+
+src=src-gen
+bin=bin
+
+-includeresource: \
+    plugin.xml=plugin.xml
+Bundle-Version: 1.0.0.${tstamp} 
+Export-Package: \
+	com.example.xtext.project
+
+Bundle-SymbolicName: ${p};singleton:=true
+
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Name: EMF Plug-in for DSL
+Bundle-Description: Provides the model implementation for the DSL
+
+-sources false
+
+-savemanifest META-INF/MANIFEST.MF

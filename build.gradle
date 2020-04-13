@@ -1,0 +1,45 @@
+/*
+ * Master Gradle build script
+ *
+ * Depends on bndPlugin property set by settings.gradle.
+ * and bnd_* values from gradle.properties.
+ */
+
+import aQute.bnd.build.Workspace
+import aQute.bnd.osgi.Constants
+import aQute.bnd.gradle.TestOSGi
+import org.gradle.api.tasks.compile.JavaCompile
+
+buildscript {
+  repositories {
+      // List in order of priority
+      maven() {
+         url "${mavenURL}"
+      }
+  }
+  dependencies {
+    classpath bndPlugin
+  }
+}
+
+/* Initialize the bnd workspace */
+Workspace.setDriver(Constants.BNDDRIVER_GRADLE)
+Workspace.addGestalt(Constants.GESTALT_BATCH, null)
+ext.bndWorkspace = new Workspace(rootDir, bnd_cnf).setOffline(gradle.startParameter.offline)
+
+ext.cnf = rootProject.project(bnd_cnf)
+ext.mavenURL = mavenURL
+
+allprojects {
+}
+
+/* Configure the subprojects */
+subprojects {
+
+  def bndProject = bndWorkspace.getProject(name)
+
+}
+
+wrapper {
+  jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
+}

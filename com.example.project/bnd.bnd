@@ -1,0 +1,20 @@
+-buildpath: \
+	org.osgi.annotation.versioning;version=1.0,\
+	org.eclipse.osgi;version=3.11,\
+	com.google.guava;version=21.0
+
+javac.source: 1.8
+javac.target: 1.8
+
+src=src
+bin=bin
+
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Version: 1.0.0.${tstamp}
+Export-Package: \
+	com.example.project
+
+Bundle-Name: Example Project
+Bundle-Description: Provides interfaces used by XText Project
+
+-savemanifest META-INF/MANIFEST.MF

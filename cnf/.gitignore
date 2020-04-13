@@ -1,0 +1,7 @@
+/generated/
+/bin/
+/cache/
+local/index.*
+/release/
+/temp/
+/maven/

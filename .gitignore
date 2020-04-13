@@ -1,0 +1,6 @@
+/generated/
+.metadata
+*.class
+bin
+.gradle/
+build/
