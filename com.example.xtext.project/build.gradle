@@ -1,6 +1,7 @@
 plugins {
-    id 'org.xtext.builder' version '2.0.8'
-    id 'java'
+   id 'org.xtext.builder' version '2.0.8'
+   id 'java'
+   id 'base'
 }
 
 // Needed for plugin repository
@@ -28,9 +29,11 @@ dependencies {
    xtextLanguages 'org.eclipse.emf:org.eclipse.emf.codegen.ecore:${emfVersion}'
    xtextLanguages 'org.eclipse.emf:org.eclipse.emf.mwe2.runtime:2.11.2'
    
-   compile "org.eclipse.xtext:org.eclipse.xtext:${xtextVersion}"
-   compile "org.eclipse.xtext:org.eclipse.xtext.xbase:${xtextVersion}"
-   compile 'org.eclipse.emf:org.eclipse.emf.ecore.xcore.lib:1.4.0'
+   // Changes from cdietrich to work with newer versions
+   xtextLanguages "org.eclipse.xtext:org.eclipse.xtext:${xtextVersion}"
+   xtextLanguages "org.eclipse.xtext:org.eclipse.xtext.xbase:${xtextVersion}"
+   xtextLanguages 'org.eclipse.emf:org.eclipse.emf.ecore.xcore.lib:1.4.0'
+   // ---
 }
 
 xtext {
@@ -45,6 +48,8 @@ xtext {
         xcore {
             setup = 'org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup'
             generator.outlet.producesJava = true
+            // Never hurts to clean
+            generator.outlet.cleanAutomatically = true
         }
     }
     sourceSets {
@@ -56,4 +61,9 @@ xtext {
             }
         }
     }
+}
+
+// src-gen has to be removed to prevent a conflict on re-builds, thanks cdietrich
+clean {
+   delete 'src-gen/'
 }
